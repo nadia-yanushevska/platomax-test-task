@@ -1,0 +1,1 @@
+# platomax-test-task
