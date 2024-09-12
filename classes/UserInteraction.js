@@ -10,33 +10,40 @@ export default class UserInteraction {
         }
     }
 
-    static getUserYN(question = "Please confirm (y/n)") {
-        return UserInteraction.#getUserInput(question, this.inputTypes.bool);
+    static getUserYN(...rest) {
+        return UserInteraction.#getUserInput(this.inputTypes.bool, ...rest);
     }
 
-    static getUserNumber(question = "Enter a number:") {
+    static getUserNumber(...rest) {
         return UserInteraction.#getUserInput(
-            question,
-            this.inputTypes.positiveInteger
+            this.inputTypes.positiveInteger,
+            ...rest
         );
     }
 
-    static #getUserInput(question, type) {
+    static #getUserInput(
+        type = this.inputTypes.bool,
+        question,
+        required = true
+    ) {
         let answer = "";
         do {
             answer = prompt(question);
-        } while (!this.#validator(answer, type));
+        } while (!this.#validator(type, answer, required));
         return answer;
     }
 
-    static #validator(input, type = "yn") {
+    static #validator(type, input, required) {
+        let validator;
         switch (type) {
             case this.inputTypes.bool:
-                return input === "y" || input === "n";
+                validator = input === "y" || input === "n";
+                break;
 
             case this.inputTypes.positiveInteger:
                 const number = Number.parseInt(input);
-                return number !== NaN && number > 0;
+                validator = number !== NaN && number > 0;
         }
+        return validator || (!required && input === "");
     }
 }
