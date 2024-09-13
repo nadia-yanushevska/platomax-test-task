@@ -8,24 +8,26 @@ export default class Game extends UserInteraction {
         super();
 
         const { x, y } = Game.getBoardSize();
-        console.log(x, y);
-
-        this.#GameBoard = new Board(x, y, Game.suits);
+        this.#GameBoard = new Board(x, y, Game.suits, "✖");
 
         return this;
     }
 
     start() {
-        console.log("Board:\n" + this.#GameBoard.toString());
+        this.showBoard();
 
         const { x, y } = Game.getSelectedCellCoordinates(
             this.#GameBoard.board.length,
             this.#GameBoard.board[0].length
         );
         this.#GameBoard.onCellClick(x, y);
+        this.showBoard();
     }
     finish() {}
     restart() {}
+    showBoard() {
+        console.log("Board:\n" + this.#GameBoard.toString());
+    }
 
     // Static
     static suits = ["♠", "♥", "♣", "♦"];

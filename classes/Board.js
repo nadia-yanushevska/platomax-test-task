@@ -2,8 +2,15 @@ import Cell from "./Cell.js";
 
 export default class Board {
     #board = [];
-    constructor(rows = 10, columns = 10, values = [1, 2, 3, 4]) {
-        this.#board = Board.randomizer(rows, columns, values);
+    #deletedSymbol;
+    constructor(rows = 10, columns = 10, values = [1, 2, 3, 4], deletedSymbol="x") {
+        this.#board = Board.randomizer(
+            rows,
+            columns,
+            values
+        );
+        this.#deletedSymbol = deletedSymbol
+
         return this;
     }
 
@@ -19,17 +26,18 @@ export default class Board {
 
     onCellClick(row, column) {
         console.log("Selected indexes:", row, column);
+        this.#board[row][column].deleteCell(this.#deletedSymbol);
+
         //recursion with visitNeighbours
     }
 
     static randomizer(rows, columns, values) {
         const array = [];
+
         for (let r = 0; r < rows; r++) {
             const row = [];
             for (let c = 0; c < columns; c++)
-                row[c] = new Cell(
-                    values[this.randomInteger(1, values.length - 1)]
-                );
+                row[c] = new Cell(values[this.randomInteger(0, values.length)]);
             array[r] = row;
         }
         return array;
