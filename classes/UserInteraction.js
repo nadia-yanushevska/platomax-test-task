@@ -24,16 +24,17 @@ export default class UserInteraction {
     static #getUserInput(
         type = this.inputTypes.bool,
         question,
-        required = true
+        required = true,
+        range = []
     ) {
         let answer = "";
         do {
             answer = prompt(question);
-        } while (!this.#validator(type, answer, required));
-        return answer;
+        } while (!this.#validator(type, answer, required, range));
+        return type === this.inputTypes.bool ? answer : +answer;
     }
 
-    static #validator(type, input, required) {
+    static #validator(type, input, required, range) {
         let validator;
         switch (type) {
             case this.inputTypes.bool:
@@ -43,6 +44,10 @@ export default class UserInteraction {
             case this.inputTypes.positiveInteger:
                 const number = Number.parseInt(input);
                 validator = number !== NaN && number > 0;
+                if (range.length)
+                    validator =
+                        validator && number >= range[0] && number < range[1];
+                console.log(range[0], range[1]);
         }
         return validator || (!required && input === "");
     }
