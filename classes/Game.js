@@ -14,26 +14,39 @@ export default class Game extends UserInteraction {
     }
 
     start() {
-        this.showBoard();
-
+        this.showBoard("Generated Board");
+        this.round();
+        this.round();
+        this.round();
+        // end game when all are deleted, 'Continue playing' after each round
+    }
+    round() {
         const { x, y } = Game.getSelectedCellCoordinates(
             this.#GameBoard.board.length,
             this.#GameBoard.board[0].length
         );
-        this.#GameBoard.onCellClick(x, y);
-        this.showBoard();
+        const targetCell = this.#GameBoard.getCell(x, y);
+        console.log(`Targeted cell has value ${targetCell.toString()}.`);
+        if (this.#GameBoard.onCellClick(targetCell) === null)
+            console.log("Cannot delete deleted cell!");
+        else
+            this.showBoard(
+                `Board after deleting cell at row #${x + 1}, cell #${y + 1}`
+            );
     }
     finish() {}
     restart() {}
-    showBoard() {
-        console.log("Board:\n" + this.#GameBoard.toString());
+    showBoard(label) {
+        console.log(label + "\n" + this.#GameBoard.toString() + "\n");
     }
 
     // Static
     static suits = ["♠", "♥", "♣", "♦"];
     static default_size = {
-        rows: 10,
-        columns: 10,
+        rows: 8,
+        columns: 8,
+        maxRows: 50,
+        maxColumns: 50,
     };
     static messages = {
         rows: `Please enter number of rows or press enter for default - ${Game.default_size.rows}:`,
@@ -42,8 +55,8 @@ export default class Game extends UserInteraction {
         default_columns: `The board consisting of ${Game.default_size.columns} columns will be created.`,
         rowCoordinate: `Please select row:`,
         columnCoordinate: `Please select column:`,
-        default_rowCoordinate: `Selected row #`,
-        default_columnCoordinate: `Selected column #`,
+        default_rowCoordinate: `Randomly selected row #`,
+        default_columnCoordinate: `Randomly selected column #`,
     };
 
     static getBoardSize() {
@@ -79,7 +92,10 @@ export default class Game extends UserInteraction {
         messages,
         default_values,
         default_messages,
-        ranges = []
+        ranges = [
+            [1, Game.default_size.maxRows + 1],
+            [1, Game.default_size.maxColumns + 1],
+        ]
     ) {
         let x;
         let y;

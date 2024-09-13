@@ -4,7 +4,7 @@ export default class UserInteraction {
             throw new Error("Abstract classes can't be instantiated.");
         }
     }
-    
+
     static inputTypes = {
         bool: "yn",
         positiveInteger: "pi",
@@ -47,7 +47,6 @@ export default class UserInteraction {
                 if (range.length)
                     validator =
                         validator && number >= range[0] && number < range[1];
-                console.log(range[0], range[1]);
         }
         return validator || (!required && input === "");
     }
