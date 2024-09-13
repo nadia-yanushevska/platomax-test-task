@@ -2,8 +2,33 @@ import Board from "./Board.js";
 import UserInteraction from "./UserInteraction.js";
 
 export default class Game extends UserInteraction {
-    #Board = {};
+    #GameBoard = {};
 
+    constructor() {
+        super();
+
+        const { x, y } = Game.getBoardSize();
+        console.log(x, y);
+
+        this.#GameBoard = new Board(x, y, Game.suits);
+
+        return this;
+    }
+
+    start() {
+        console.log("Board:\n" + this.#GameBoard.toString());
+
+        const { x, y } = Game.getSelectedCellCoordinates(
+            this.#GameBoard.board.length,
+            this.#GameBoard.board[0].length
+        );
+        this.#GameBoard.onCellClick(x, y);
+    }
+    finish() {}
+    restart() {}
+
+    // Static
+    static suits = ["♠", "♥", "♣", "♦"];
     static default_size = {
         rows: 10,
         columns: 10,
@@ -19,29 +44,6 @@ export default class Game extends UserInteraction {
         default_columnCoordinate: `Selected column #`,
     };
 
-    constructor() {
-        super();
-
-        const { x, y } = Game.getBoardSize();
-        console.log(x, y);
-
-        this.#Board = new Board(x, y);
-
-        return this;
-    }
-
-    start() {
-        console.log("Board:\n", this.#Board.board);
-
-        const { x, y } = Game.getSelectedCellCoordinates(
-            this.#Board.board.length,
-            this.#Board.board[0].length
-        );
-        console.log("Selected:", x, y);
-    }
-    finish() {}
-    restart() {}
-
     static getBoardSize() {
         return Game.get2Numbers(
             [Game.messages.rows, Game.messages.columns],
@@ -54,7 +56,7 @@ export default class Game extends UserInteraction {
         const defaultRow = Board.randomInteger(0, rowMax);
         const defaultColumn = Board.randomInteger(0, columnMax);
 
-        return Game.get2Numbers(
+        let { x, y } = Game.get2Numbers(
             [Game.messages.rowCoordinate, Game.messages.columnCoordinate],
             [defaultRow, defaultColumn],
             [
@@ -62,10 +64,11 @@ export default class Game extends UserInteraction {
                 Game.messages.default_columnCoordinate + defaultColumn + ".",
             ],
             [
-                [0, rowMax],
-                [0, columnMax],
+                [1, rowMax + 1],
+                [1, columnMax + 1],
             ]
         );
+        return { x: --x, y: --y };
     }
 
     static get2Numbers(

@@ -1,14 +1,14 @@
 export default class UserInteraction {
-    static inputTypes = {
-        bool: "yn",
-        positiveInteger: "pi",
-    };
-
     constructor() {
         if (this.constructor == UserInteraction) {
             throw new Error("Abstract classes can't be instantiated.");
         }
     }
+    
+    static inputTypes = {
+        bool: "yn",
+        positiveInteger: "pi",
+    };
 
     static getUserYN(...rest) {
         return UserInteraction.#getUserInput(this.inputTypes.bool, ...rest);
