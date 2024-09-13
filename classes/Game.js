@@ -53,8 +53,10 @@ export default class Game extends UserInteraction {
     }
 
     static getSelectedCellCoordinates(rowMax, columnMax) {
-        const defaultRow = Board.randomInteger(0, rowMax);
-        const defaultColumn = Board.randomInteger(0, columnMax);
+        rowMax++;
+        columnMax++;
+        const defaultRow = Board.randomInteger(1, rowMax);
+        const defaultColumn = Board.randomInteger(1, columnMax);
 
         let { x, y } = Game.get2Numbers(
             [Game.messages.rowCoordinate, Game.messages.columnCoordinate],
@@ -64,8 +66,8 @@ export default class Game extends UserInteraction {
                 Game.messages.default_columnCoordinate + defaultColumn + ".",
             ],
             [
-                [1, rowMax + 1],
-                [1, columnMax + 1],
+                [1, rowMax],
+                [1, columnMax],
             ]
         );
         return { x: --x, y: --y };
