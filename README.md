@@ -36,7 +36,7 @@
             alt="Game Preview in Terminal"
         />
 
-        <h2 id="interactive">User Interactive Mode</h2>
+<h2 id="interactive">User Interactive Mode</h2>
         <p>To run user interactive mode, navigate to live page.</p>
         <code>
             &#9888; This is light version of the game and does not provide
@@ -54,7 +54,7 @@
             again. See logs to find out why the input was rejected.</code
         >
 
-        <h2 id="tech">Tech Stack</h2>
+<h2 id="tech">Tech Stack</h2>
         <ul>
             <li>Javascript</li>
             <li>OOP</li>
