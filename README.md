@@ -51,7 +51,7 @@
         </p>
         <code
             >&#9888; If you add invalid input, you will be asked to enter value
-            again. See logs to find out why the input was rejected.</code
+            again. See the logs in Dev Tools to find out why the input was rejected.</code
         >
 
 <h2 id="tech">Tech Stack</h2>
