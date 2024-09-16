@@ -32,7 +32,7 @@
         </p>
         <h3>Preview:</h3>
         <img
-            src="./public/terminal-preview.png"
+            src="./terminal-preview.png"
             alt="Game Preview in Terminal"
         />
 
