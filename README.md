@@ -15,7 +15,7 @@
         </p>
         <p>
             There are two modes to play the game: using terminal with default
-            and random values and user interactive, where you can choose the
+            and random values and user interactive, where user can choose the
             values.
         </p>
         <h2 id="terminal">Terminal Run</h2>
@@ -37,7 +37,7 @@
         />
 
 <h2 id="interactive">User Interactive Mode</h2>
-        <p>To run user interactive mode, navigate to live page.</p>
+        <p>To run user interactive mode, navigate to <strong>live page</strong>.</p>
         <p><code>&#128712; This is light version of the game and does not provide visualizations yet. Use <strong>Dev Tools</strong> to see logs.</code></p>
         <p>
             Once the page loads you will see prompts, which will ask to input
