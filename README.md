@@ -20,12 +20,12 @@
         </p>
         <h2 id="terminal">Terminal Run</h2>
         <p>
-            To run demo mode, enter the following command in terminal:
+            To run demo mode, copy repository, open terminal in the root folder and enter the following command:
             <code>node main.js</code>
         </p>
         <p>
             This mode uses default board size of 8x8 cells, and runs 3 round of
-            the game. Each round generates of random values for row and column
+            the game. Each round generates random values for row and column
             to imitate user cell selection. Then the selected cell is clicked
             and the cell(s) is/are deleted. At the end of the round, the updated
             table is displayed.
@@ -47,11 +47,11 @@
             number of rows and number of columns for the table. After that, you
             will be asked if you want to continue playing. If you choose to
             continue, you will be asked to select row and column of the cell
-            coordinates to click. Otherwise, the game is over
+            coordinates to click. Otherwise, the game is finished.
         </p>
         <code
             >&#9888; If you add invalid input, you will be asked to enter value
-            again. See the logs in Dev Tools to find out why the input was rejected.</code
+            again.</code
         >
 
 <h2 id="tech">Tech Stack</h2>
