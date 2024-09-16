@@ -20,9 +20,9 @@
         </p>
         <h2 id="terminal">Terminal Run</h2>
         
-<code>&#9888; Requires Node.js LTS version</code>
+<p><code>&#9888; Requires Node.js LTS version</code></p>
 <p>To run demo mode, copy repository, open terminal in the root folder and enter the following command:</p>
-            <code>node main.js</code>
+            <p><code>node main.js</code></p>
         <p>
             This mode uses default board size of 8x8 cells, and runs 3 round of
             the game. Each round generates random values for row and column
@@ -38,8 +38,7 @@
 
 <h2 id="interactive">User Interactive Mode</h2>
         <p>To run user interactive mode, navigate to live page.</p>
-        <code>&#128712; This is light version of the game and does not provide visualizations yet. 
-    Use <strong>Dev Tools</strong> to see logs.</code>
+        <p><code>&#128712; This is light version of the game and does not provide visualizations yet. Use <strong>Dev Tools</strong> to see logs.</code></p>
         <p>
             Once the page loads you will see prompts, which will ask to input
             number of rows and number of columns for the table. After that, you
