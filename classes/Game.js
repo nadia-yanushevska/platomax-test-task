@@ -15,11 +15,22 @@ export default class Game extends UserInteraction {
 
     start() {
         this.showBoard("Generated Board");
-        this.round();
-        this.round();
-        this.round();
-        // end game when all are deleted, 'Continue playing' after each round
+        const defaultRounds = 3;
+        let i = 0;
+
+        while (Game.getUserContinue(i, defaultRounds)) {
+            this.round();
+            i++;
+        }
+
+        this.finish();
     }
+
+    finish() {
+        this.#GameBoard = {};
+        console.log("Game finished.");
+    }
+
     round() {
         const { x, y } = Game.getSelectedCellCoordinates(
             this.#GameBoard.board.length,
@@ -34,13 +45,13 @@ export default class Game extends UserInteraction {
                 `Board after deleting cell at row #${x + 1}, cell #${y + 1}`
             );
     }
-    finish() {}
-    restart() {}
+
     showBoard(label) {
         console.log(label + "\n" + this.#GameBoard.toString() + "\n");
     }
 
     // Static
+    //temp
     static suits = ["♠", "♥", "♣", "♦"];
     static default_size = {
         rows: 8,
@@ -57,6 +68,7 @@ export default class Game extends UserInteraction {
         columnCoordinate: `Please select column:`,
         default_rowCoordinate: `Randomly selected row #`,
         default_columnCoordinate: `Randomly selected column #`,
+        continue: "Continue playing? (y/n)",
     };
 
     static getBoardSize() {
@@ -111,5 +123,15 @@ export default class Game extends UserInteraction {
             console.log(default_messages[1]);
         }
         return { x, y };
+    }
+
+    static getUserContinue(count = 0, maxCount = 3) {
+        try {
+            return UserInteraction.getUserYN(Game.messages.continue);
+        } catch (e) {
+            console.log(count, maxCount);
+
+            return count < maxCount;
+        }
     }
 }
