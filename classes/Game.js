@@ -18,10 +18,10 @@ export default class Game extends UserInteraction {
         const defaultRounds = 3;
         let i = 0;
 
-        while (Game.getUserContinue(i, defaultRounds)) {
-            this.round();
-            i++;
-        }
+        // while (Game.getUserContinue(i, defaultRounds)) {
+        this.round();
+        i++;
+        // }
 
         this.finish();
     }
