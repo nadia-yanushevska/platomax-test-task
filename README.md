@@ -19,7 +19,9 @@
             values.
         </p>
         <h2 id="terminal">Terminal Run</h2>
-        <p>
+        
+<code>&#9888; Requires Node.js LTS version</code>
+<p>
             To run demo mode, copy repository, open terminal in the root folder and enter the following command:
             <code>node main.js</code>
         </p>
@@ -38,10 +40,8 @@
 
 <h2 id="interactive">User Interactive Mode</h2>
         <p>To run user interactive mode, navigate to live page.</p>
-        <code>
-            &#9888; This is light version of the game and does not provide
-            visualizations yet. Use Dev Tools to see logs.
-        </code>
+        <code>&#128712; This is light version of the game and does not provide visualizations yet. 
+        Use <strong>Dev Tools</strong> to see logs.</code>
         <p>
             Once the page loads you will see prompts, which will ask to input
             number of rows and number of columns for the table. After that, you
@@ -49,10 +49,6 @@
             continue, you will be asked to select row and column of the cell
             coordinates to click. Otherwise, the game is finished.
         </p>
-        <code
-            >&#9888; If you add invalid input, you will be asked to enter value
-            again.</code
-        >
 
 <h2 id="tech">Tech Stack</h2>
         <ul>
