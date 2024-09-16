@@ -29,8 +29,9 @@ export default class UserInteraction {
     ) {
         let answer = "";
         do {
-            answer = prompt(question);
-            console.log(this.#validatorMessage(type, answer, required, range));
+            answer = prompt(
+                this.#validatorMessage(type, answer, required, range) + question
+            );
         } while (!this.#validator(type, answer, required, range));
         return type === this.inputTypes.bool ? answer === "y" : +answer;
     }
@@ -65,6 +66,6 @@ export default class UserInteraction {
                         range[1] - 1
                     })`;
         }
-        return message;
+        return input ? message + "\n" : "";
     }
 }
