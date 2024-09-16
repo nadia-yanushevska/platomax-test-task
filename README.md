@@ -21,9 +21,7 @@
         <h2 id="terminal">Terminal Run</h2>
         
 <code>&#9888; Requires Node.js LTS version</code>
-<p>
-            To run demo mode, copy repository, open terminal in the root folder and enter the following command:
-        </p>
+<p>To run demo mode, copy repository, open terminal in the root folder and enter the following command:</p>
             <code>node main.js</code>
         <p>
             This mode uses default board size of 8x8 cells, and runs 3 round of
